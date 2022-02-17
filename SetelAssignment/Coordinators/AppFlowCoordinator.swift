@@ -23,12 +23,35 @@ final class AppFlowCoordinator {
 
 extension AppFlowCoordinator {
     private func makeMainViewModel() -> MainViewModel {
-        return DefaultMainViewModel(locationService: LocationService.shared)
+        return DefaultMainViewModel(coordinator: self,
+                                    locationService: LocationService.shared,
+                                    userDefaultPersistent: UserDefaultPersistent.shared)
     }
     
     private func makeMainScreen() -> MainViewController {
         let viewModel = makeMainViewModel()
-        let view = MainViewController.create(with: viewModel)
-        return view
+        let viewController = MainViewController.create(with: viewModel)
+        return viewController
+    }
+    
+    private func makeLocationListViewModel() -> LocationListViewModel {
+        return DefaultLocationListViewModel(locationsPersistent: UserDefaultPersistent.shared)
+    }
+    
+    private func makeLocationListScreen() -> LocationListViewController {
+        let viewModel = makeLocationListViewModel()
+        let viewController = LocationListViewController.create(with: viewModel)
+        return viewController
+    }
+}
+
+extension AppFlowCoordinator: MainCoordinatorType {
+    func routeToWifiList() {
+        
+    }
+    
+    func routeToLocationList() {
+        let viewController = makeLocationListScreen()
+        navigationController.pushViewController(viewController, animated: true)
     }
 }

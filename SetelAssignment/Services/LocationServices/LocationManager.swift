@@ -7,8 +7,11 @@
 
 import Foundation
 import CoreLocation
+import RxSwift
+import RxCocoa
 
 protocol LocationServiceType {
+    var currentLocation: BehaviorSubject<CLLocation?> { get }
     func grantLocationPermissionIfNeeded() -> Bool
 }
 
@@ -25,8 +28,9 @@ final class LocationService: NSObject, LocationServiceType {
         super.init()
         
         locationManager.delegate = self
-        locationManager.startUpdatingLocation()
     }
+    
+    let currentLocation: BehaviorSubject<CLLocation?> = BehaviorSubject<CLLocation?>(value: nil)
 }
 
 // MARK: - LocationServiceType
@@ -47,6 +51,12 @@ extension LocationService {
 extension LocationService: CLLocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         authorizationStatus = manager.authorizationStatus
+        switch manager.authorizationStatus {
+            case .authorizedAlways, .authorizedWhenInUse:
+                locationManager.startUpdatingLocation()
+            default:
+                break
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -54,8 +64,14 @@ extension LocationService: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        locations.forEach { location in
-            print("New location arrived: \(location)")
+        guard let newLocation = locations.last else { return }
+        print("New location at long:\(newLocation.coordinate.longitude), lat:\(newLocation.coordinate.latitude)")
+        if let lastLocation = try? currentLocation.value() {
+            if lastLocation.coordinate != newLocation.coordinate {
+                currentLocation.onNext(newLocation)
+            }
+        } else {
+            currentLocation.onNext(newLocation)
         }
     }
 }

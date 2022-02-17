@@ -1,0 +1,6 @@
+framework module Pods_SetelAssignment {
+  umbrella header "Pods-SetelAssignment-umbrella.h"
+
+  export *
+  module * { export * }
+}
