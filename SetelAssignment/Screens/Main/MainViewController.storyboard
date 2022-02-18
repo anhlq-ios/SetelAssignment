@@ -181,8 +181,11 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="connectedStatusLabel" destination="TgQ-cU-Yc0" id="uDI-Cg-LjG"/>
+                        <outlet property="locationListView" destination="M5m-FO-1k0" id="Llm-Qz-cMa"/>
                         <outlet property="radiusTextField" destination="xRs-GL-Mnq" id="wnr-0x-EPM"/>
+                        <outlet property="radiusView" destination="GBZ-4b-pOc" id="QA1-0s-jQt"/>
                         <outlet property="showLocationListButton" destination="mOm-nV-TCG" id="dUs-Gf-wcD"/>
+                        <outlet property="wifiListView" destination="xcE-7I-udE" id="5yp-Xd-Rp6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SPs-1e-mb8" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -59,7 +59,9 @@ class LocationListViewController: UIViewController, StoryboardInstantiable {
         tableView.register(LocationTableViewCell.self)
         tableView.dataSource = self
         tableView.delegate = self
-        
+        let header = UILabel(frame: CGRect(origin: .zero, size: CGSize(width: view.bounds.width, height: 40)))
+        header.text = "Available location points"
+        tableView.tableHeaderView = header
         longTextField.keyboardType = .numbersAndPunctuation
         latTextField.keyboardType = .numbersAndPunctuation
     }

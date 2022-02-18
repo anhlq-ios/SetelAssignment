@@ -20,6 +20,10 @@ class MainViewController: UIViewController, StoryboardInstantiable {
         return vc
     }
     
+    @IBOutlet private weak var locationListView: UIView!
+    @IBOutlet private weak var wifiListView: UIView!
+    @IBOutlet private weak var radiusView: UIView!
+    
     @IBOutlet private weak var connectedStatusLabel: UILabel!
     @IBOutlet private weak var showLocationListButton: UIButton!
     @IBOutlet private weak var radiusTextField: UITextField!
@@ -29,7 +33,8 @@ class MainViewController: UIViewController, StoryboardInstantiable {
     }
     
     @IBAction private func showWifiListAction(_ sender: Any) {
-        viewModel.showWifiList()
+//        viewModel.showWifiList()
+        showAlert(title: "Not supported", message: "This feature is not available. Please contact the author for more information.")
     }
     
     private let disposeBag = DisposeBag()
@@ -50,6 +55,10 @@ class MainViewController: UIViewController, StoryboardInstantiable {
         title = "MainViewController"
         radiusTextField.keyboardType = .decimalPad
         radiusTextField.inputAccessoryView = makeToolBar()
+        
+        locationListView.layer.cornerRadius = 4
+        wifiListView.layer.cornerRadius = 4
+        radiusView.layer.cornerRadius = 4
     }
     
     private func bind(to viewModel: MainViewModel) {
@@ -83,5 +92,13 @@ class MainViewController: UIViewController, StoryboardInstantiable {
     
     @objc private func doneButtonTapped() {
         view.endEditing(true)
+    }
+    
+    private func showAlert(title: String?, message: String?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        present(alert, animated: true, completion: nil)
     }
 }

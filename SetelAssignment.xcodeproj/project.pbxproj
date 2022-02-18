@@ -26,6 +26,7 @@
 		78C495A627BE906900A49945 /* LocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78C495A427BE906900A49945 /* LocationTableViewCell.xib */; };
 		78C495A827BE930200A49945 /* TableViewCellReusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C495A727BE930200A49945 /* TableViewCellReusable.swift */; };
 		78C495AA27BEA8BB00A49945 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C495A927BEA8BB00A49945 /* Location.swift */; };
+		78C495BC27BFDB5D00A49945 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C495BB27BFDB5D00A49945 /* NetworkManager.swift */; };
 		7EFADBC565B06C306264B56A /* Pods_SetelAssignment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 550A260CB67899B9E8A3CDA0 /* Pods_SetelAssignment.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		78C495A427BE906900A49945 /* LocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationTableViewCell.xib; sourceTree = "<group>"; };
 		78C495A727BE930200A49945 /* TableViewCellReusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellReusable.swift; sourceTree = "<group>"; };
 		78C495A927BEA8BB00A49945 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		78C495BB27BFDB5D00A49945 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		B7AD62A2ACF27E8C5651F96B /* Pods-SetelAssignment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SetelAssignment.release.xcconfig"; path = "Target Support Files/Pods-SetelAssignment/Pods-SetelAssignment.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,6 +135,7 @@
 		78C4956227BD32E100A49945 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				78C495BA27BFDB4C00A49945 /* NetworkServices */,
 				78C4957A27BD3A9500A49945 /* LocationServices */,
 			);
 			path = Services;
@@ -232,6 +235,14 @@
 				78C495A427BE906900A49945 /* LocationTableViewCell.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		78C495BA27BFDB4C00A49945 /* NetworkServices */ = {
+			isa = PBXGroup;
+			children = (
+				78C495BB27BFDB5D00A49945 /* NetworkManager.swift */,
+			);
+			path = NetworkServices;
 			sourceTree = "<group>";
 		};
 		9CFCF5EFFA5D267E6140CB1A /* Frameworks */ = {
@@ -371,6 +382,7 @@
 				78C4956927BD33C900A49945 /* StoryboardInstantiable.swift in Sources */,
 				78C4954A27BD31B500A49945 /* AppDelegate.swift in Sources */,
 				78C4957527BD344200A49945 /* MainViewController.swift in Sources */,
+				78C495BC27BFDB5D00A49945 /* NetworkManager.swift in Sources */,
 				78C495A827BE930200A49945 /* TableViewCellReusable.swift in Sources */,
 				78C4958227BD502800A49945 /* Constants.swift in Sources */,
 			);
@@ -441,7 +453,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -496,7 +508,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -512,6 +524,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SetelAssignment/SetelAssignment.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FPK477HRLH;
@@ -521,6 +535,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -528,6 +543,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.anhlq.SetelAssignment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -540,6 +556,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SetelAssignment/SetelAssignment.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FPK477HRLH;
@@ -549,6 +567,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -556,6 +575,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.anhlq.SetelAssignment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
